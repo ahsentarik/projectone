@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     restart: always
     volumes:
-      - db_data/:/var/lib/mysql
+      - ./data_one:/var/lib/mysql
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
@@ -15,10 +15,9 @@ services:
   wordpress:
     image: wordpress
     ports:
-      - 3000:80
+      - 2011:80
     restart: always
-    volumes: 
-      - wordpress:/var/www/html
+    volumes: ["./word_one:/var/www/html"]
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
@@ -29,4 +28,3 @@ services:
 volumes:
     db_data:
     wordpress:
-
